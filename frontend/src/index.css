@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #0A0A0A;
+  color: #F5F5F5;
+  font-family: 'IBM Plex Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: #B71C1C;
+  color: #F5F5F5;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #0A0A0A; }
+::-webkit-scrollbar-thumb { background: #1f1f1f; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #B71C1C; }
+
+/* Grain / noise overlay reusable */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* Concrete texture background */
+.concrete-bg {
+  background-color: #141414;
+  background-image:
+    radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 24px 24px, 48px 48px;
+  background-position: 0 0, 12px 12px;
+}
+
+.font-display { font-family: 'Anton', sans-serif; letter-spacing: 0.02em; }
+.font-serif-story { font-family: 'Cormorant Garamond', serif; }
+.font-body { font-family: 'IBM Plex Sans', sans-serif; }
+
+/* Sharp red button */
+.btn-red {
+  background: #B71C1C;
+  color: #F5F5F5;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  padding: 16px 28px;
+  transition: all 250ms cubic-bezier(.2,.7,.2,1);
+  border: 1px solid #B71C1C;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.btn-red:hover {
+  background: #8B0000;
+  border-color: #8B0000;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 30px -8px rgba(183,28,28,0.55);
+}
+
+.btn-outline {
+  background: transparent;
+  color: #F5F5F5;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  padding: 16px 28px;
+  border: 1px solid rgba(255,255,255,0.4);
+  transition: all 250ms cubic-bezier(.2,.7,.2,1);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.btn-outline:hover {
+  border-color: #F5F5F5;
+  background: rgba(255,255,255,0.05);
+}
+
+.diagonal-cut {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0 100%);
+}
+
+.hover-lift { transition: transform 300ms cubic-bezier(.2,.7,.2,1), border-color 300ms; }
+.hover-lift:hover { transform: translateY(-4px); border-color: #B71C1C; }
+
+.fade-in-up { animation: fadeInUp 800ms cubic-bezier(.2,.7,.2,1) both; }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.marquee {
+  display: flex;
+  animation: marquee 30s linear infinite;
+  gap: 3rem;
+  white-space: nowrap;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 96%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 96%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 0 74% 42%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 64%;
+    --accent: 0 74% 42%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 74% 42%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 0 74% 42%;
+    --radius: 0.25rem;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+}
