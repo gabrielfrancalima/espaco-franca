@@ -68,7 +68,33 @@ export default function History() {
                 <p className="font-display text-3xl uppercase mt-1">Danilo França</p>
               </div>
             </div>
+<div className="grid grid-cols-2 gap-4 mt-6">
 
+  <img
+    src="/images/foto1.jpg"
+    alt="Espaço França"
+    className="w-full h-48 object-cover rounded-lg"
+  />
+
+  <img
+    src="/images/foto2.jpg"
+    alt="Espaço França"
+    className="w-full h-48 object-cover rounded-lg"
+  />
+
+  <img
+    src="/images/foto3.jpg"
+    alt="Espaço França"
+    className="w-full h-48 object-cover rounded-lg"
+  />
+
+  <img
+    src="/images/foto4.jpg"
+    alt="Espaço França"
+    className="w-full h-48 object-cover rounded-lg"
+  />
+
+</div>
             <blockquote
               data-testid="history-founder-quote"
               className="mt-10 border-l-2 border-[#B71C1C] pl-6 font-serif-story italic text-2xl md:text-3xl text-[#F5F5F5] leading-snug"
