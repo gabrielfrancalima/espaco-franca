@@ -91,7 +91,7 @@ export default function History() {
   <img
     src="/images/foto4.jpeg"
     alt="Espaço França"
-    className="w-full h-[380px] object-cover"
+    className="w-full h-48 object-cover rounded-lg"
   />
 
 </div>
