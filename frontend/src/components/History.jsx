@@ -71,25 +71,25 @@ export default function History() {
 <div className="grid grid-cols-2 gap-4 mt-6">
 
   <img
-    src="/images/foto1.jpg"
+    src="/images/foto1.jpeg"
     alt="Espaço França"
     className="w-full h-48 object-cover rounded-lg"
   />
 
   <img
-    src="/images/foto2.jpg"
+    src="/images/foto2.jpeg"
     alt="Espaço França"
     className="w-full h-48 object-cover rounded-lg"
   />
 
   <img
-    src="/images/foto3.jpg"
+    src="/images/foto3.jpeg"
     alt="Espaço França"
     className="w-full h-48 object-cover rounded-lg"
   />
 
   <img
-    src="/images/foto4.jpg"
+    src="/images/foto4.jpeg"
     alt="Espaço França"
     className="w-full h-48 object-cover rounded-lg"
   />
