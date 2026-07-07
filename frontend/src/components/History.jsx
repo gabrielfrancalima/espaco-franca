@@ -58,7 +58,7 @@ export default function History() {
 
             <div className="relative mt-10 diagonal-cut overflow-hidden">
               <img
-                src={INTERIOR_URL}
+                src="/images/foto2.jpeg"
                 alt="Danilo França e o Espaço França"
                 className="w-full h-[380px] object-cover"
               />
