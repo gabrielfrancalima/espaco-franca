@@ -64,13 +64,13 @@ export default function Footer() {
               <MessageCircle size={16} /> WhatsApp
             </a>
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/espacofranca.ofc"
               target="_blank"
               rel="noreferrer"
               data-testid="footer-instagram"
               className="flex items-center gap-2 text-sm text-[#F5F5F5] hover:text-[#B71C1C] transition-colors"
             >
-              <Instagram size={16} /> @espacofranca
+              <Instagram size={16} /> @espacofranca.ofc
             </a>
           </div>
         </div>
