@@ -3,15 +3,15 @@ import { INTERIOR_URL } from "@/lib/assets";
 const chapters = [
   {
     year: "2015",
-    title: "O Quintal e o Sonho",
+    title: "O Quintal e  o Sonho",
     testId: "history-timeline-item-2015",
     body: `Nascido e criado com orgulho nas periferias de São Paulo, Danilo França aprendeu desde cedo que a vida exige coragem. Os primeiros cortes aconteceram no quintal de casa, atendendo os amigos da vizinhança. Cada trocado guardado tinha um propósito sagrado: financiar seus estudos em um curso profissionalizante de barbearia.`,
   },
   {
     year: "2016",
-    title: "Do Aluno ao Instrutor",
+    title: "De Aluno a Instrutor",
     testId: "history-timeline-item-2016",
-    body: `A dedicação foi tão intensa que Danilo não foi apenas um bom aluno — ele foi o destaque. De aluno, rapidamente foi convidado a se tornar instrutor do curso. Ensinar reafirmou seu dom e abriu portas para trabalhar em algumas das maiores e mais renomadas barbearias da capital.`,
+    body: `A dedicação foi tão intensa que Danilo não foi apenas um bom aluno — ele foi o destaque. De aluno, rapidamente foi convidado a se tornar instrutor do curso. Ensinar reafirmou seu dom e abriu portas para trabalhar em algumas das maiores barbearias da cidade.`,
   },
   {
     year: "2018",
