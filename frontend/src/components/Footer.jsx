@@ -44,17 +44,17 @@ export default function Footer() {
             Endereço
           </h4>
           <p className="text-sm text-[#A3A3A3] flex items-start gap-2">
-            <MapPin size={14} className="mt-1 shrink-0" 
-              <>
-  R. Juraraterê, 07
-  <br />
-  Itaim Paulista
-  <br />
-  São Paulo - SP
-  <br />
-  CEP 08140-040
-</>
-          </p>
+  <MapPin size={14} className="mt-1 shrink-0" />
+  <>
+    R. Juraraterê, 07
+    <br />
+    Itaim Paulista
+    <br />
+    São Paulo - SP
+    <br />
+    CEP 08140-040
+  </>
+</p>
         </div>
 
         <div>
