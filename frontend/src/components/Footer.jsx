@@ -44,8 +44,16 @@ export default function Footer() {
             Endereço
           </h4>
           <p className="text-sm text-[#A3A3A3] flex items-start gap-2">
-            <MapPin size={14} className="mt-1 shrink-0" />
-            São Paulo — SP
+            <MapPin size={14} className="mt-1 shrink-0" 
+              <>
+  R. Juraraterê, 07
+  <br />
+  Itaim Paulista
+  <br />
+  São Paulo - SP
+  <br />
+  CEP 08140-040
+</>
           </p>
         </div>
 
@@ -55,7 +63,7 @@ export default function Footer() {
           </h4>
           <div className="space-y-3">
             <a
-              href={buildWhatsappLink("Olá! Vim pelo site do Espaço França.")}
+              href={buildWhatsappLink("Salve! Vim pelo site do Espaço França.")}
               target="_blank"
               rel="noreferrer"
               data-testid="footer-whatsapp"
