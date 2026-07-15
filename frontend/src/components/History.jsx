@@ -49,7 +49,7 @@ export default function History() {
 
             <div className="flex gap-4">
               <div className="flex-1 h-64 overflow-hidden rounded-lg cursor-pointer">
-                <img src="/images/foto1.jpeg" className="w-full h-full object-cover object-[center_20%] hover:scale-105 transition-transform duration-500" alt="Corte 1" />
+                <img src="/images/foto4.jpeg" className="w-full h-full object-cover object-[center_20%] hover:scale-105 transition-transform duration-500" alt="Corte 1" />
               </div>
               <div className="flex-1 h-64 overflow-hidden rounded-lg cursor-pointer">
                 <img src="/images/foto3.jpeg" className="w-full h-full object-cover object-[center_30%] hover:scale-105 transition-transform duration-500" alt="Corte 2" />
