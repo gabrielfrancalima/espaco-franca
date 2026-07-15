@@ -13,22 +13,29 @@ export default function History() {
       <div className="relative max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           
-          {/* COLUNA ESQUERDA: Fundador */}
-          <div className="lg:sticky lg:top-32">
+          {/* COLUNA ESQUERDA: Fundador + Imagens secundárias */}
+          <div className="lg:sticky lg:top-32 space-y-6">
             <h2 className="font-display uppercase text-5xl lg:text-7xl leading-[0.9]">
               Muito além <br /> da cadeira <br /> <span className="text-[#B71C1C]">e da navalha</span>
             </h2>
 
-            <div className="relative mt-10 overflow-hidden rounded-lg cursor-pointer group">
+            {/* Imagem do Fundador */}
+            <div className="relative overflow-hidden rounded-lg cursor-pointer group">
               <img src="/images/foto2.jpeg" alt="Danilo França" className="w-full h-[450px] object-cover object-top transition-transform duration-500 group-hover:scale-105" />
               <div className="absolute bottom-6 left-6 text-white">
                 <p className="text-xs uppercase tracking-widest text-[#B71C1C]">Fundador</p>
                 <h3 className="text-4xl font-bold uppercase">Danilo França</h3>
               </div>
             </div>
+
+            {/* Imagens secundárias movidas para cá */}
+            <div className="grid grid-cols-2 gap-4">
+              <img src="/images/foto1.jpeg" className="h-40 w-full object-cover rounded-lg hover:scale-[1.02] transition-transform" alt="Corte 1" />
+              <img src="/images/foto3.jpeg" className="h-40 w-full object-cover rounded-lg hover:scale-[1.02] transition-transform" alt="Corte 2" />
+            </div>
           </div>
 
-          {/* COLUNA DIREITA: Timeline + Galeria no final */}
+          {/* COLUNA DIREITA: Timeline + Foto da barbearia em destaque no final */}
           <div className="relative">
             <div className="space-y-20">
               {chapters.map((c) => (
@@ -37,16 +44,10 @@ export default function History() {
                   <h3 className="text-2xl uppercase mt-3">{c.title}</h3>
                   <p className="mt-4 text-xl text-[#D4D4D4] leading-relaxed">{c.body}</p>
                   
-                  {/* Galeria aparece APENAS após o ano 2020 */}
+                  {/* Foto da barbearia em destaque APENAS após o ano 2020 */}
                   {c.year === "2020" && (
-                    <div className="mt-10 grid grid-cols-2 gap-4">
-                      {/* Foto da barbearia em destaque (span col-2) */}
-                      <div className="col-span-2 overflow-hidden rounded-lg cursor-pointer">
-                        <img src={INTERIOR_URL} alt="Barbearia" className="w-full h-80 object-cover transition-transform duration-500 hover:scale-105" />
-                      </div>
-                      {/* Demais fotos menores */}
-                      <img src="/images/foto1.jpeg" className="h-40 w-full object-cover rounded-lg" alt="Corte" />
-                      <img src="/images/foto3.jpeg" className="h-40 w-full object-cover rounded-lg" alt="Corte" />
+                    <div className="mt-10 overflow-hidden rounded-lg cursor-pointer">
+                      <img src={INTERIOR_URL} alt="Barbearia" className="w-full h-80 object-cover transition-transform duration-500 hover:scale-105" />
                     </div>
                   )}
                 </div>
