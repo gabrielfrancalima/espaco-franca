@@ -33,37 +33,34 @@ export default function History() {
       <div className="relative max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           
-          {/* COLUNA ESQUERDA: Fundador + Todas as Imagens */}
+          {/* COLUNA ESQUERDA: Fundador -> Fotos Menores -> Barbearia */}
           <div className="lg:sticky lg:top-32 space-y-6">
             <h2 className="font-display uppercase text-5xl lg:text-7xl leading-[0.9]">
               Muito além <br /> da cadeira <br /> <span className="text-[#B71C1C]">e da navalha</span>
             </h2>
 
-            {/* Imagem do Fundador */}
+            {/* 1. Imagem do Fundador */}
             <div className="relative overflow-hidden rounded-lg cursor-pointer group">
               <img src="/images/foto2.jpeg" alt="Danilo França" className="w-full h-[450px] object-cover object-top transition-transform duration-500 group-hover:scale-105" />
               <div className="absolute bottom-6 left-6 text-white">
-                <p className="text-sm uppercase tracking-widest text-[#f5f3f3]">Fundador</p>
+               <p className="text-sm uppercase tracking-widest text-[#f5f3f3]">Fundador</p>
                 <h3 className="text-4xl font-bold uppercase">Danilo França</h3>
               </div>
             </div>
 
-            {/* Galeria de Fotos Agrupadas */}
-            <div className="space-y-4">
-              {/* Imagem da Barbearia (tamanho original) */}
-              <div className="overflow-hidden rounded-lg cursor-pointer shadow-lg shadow-black/50">
-                <img src={INTERIOR_URL} alt="Barbearia" className="w-full object-cover object-center transition-transform duration-500 hover:scale-[1.02]" />
+            {/* 2. Fotos menores (entre as duas grandes) */}
+            <div className="flex gap-4">
+              <div className="flex-1 h-64 overflow-hidden rounded-lg cursor-pointer">
+                <img src="/images/foto1.jpeg" className="w-full h-full object-cover object-[center_20%] hover:scale-105 transition-transform duration-500" alt="Corte 1" />
               </div>
-              
-              {/* Fotos menores abaixo */}
-              <div className="flex gap-4">
-                <div className="flex-1 h-64 overflow-hidden rounded-lg cursor-pointer">
-                  <img src="/images/foto1.jpeg" className="w-full h-full object-cover object-[center_20%] hover:scale-105 transition-transform duration-500" alt="Corte 1" />
-                </div>
-                <div className="flex-1 h-64 overflow-hidden rounded-lg cursor-pointer">
-                  <img src="/images/foto3.jpeg" className="w-full h-full object-cover object-[center_30%] hover:scale-105 transition-transform duration-500" alt="Corte 2" />
-                </div>
+              <div className="flex-1 h-64 overflow-hidden rounded-lg cursor-pointer">
+                <img src="/images/foto3.jpeg" className="w-full h-full object-cover object-[center_30%] hover:scale-105 transition-transform duration-500" alt="Corte 2" />
               </div>
+            </div>
+
+            {/* 3. Foto da Barbearia */}
+            <div className="overflow-hidden rounded-lg cursor-pointer shadow-lg shadow-black/50">
+              <img src={INTERIOR_URL} alt="Barbearia" className="w-full object-cover object-center transition-transform duration-500 hover:scale-[1.02]" />
             </div>
           </div>
 
