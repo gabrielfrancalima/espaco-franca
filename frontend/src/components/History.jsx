@@ -33,7 +33,7 @@ export default function History() {
       <div className="relative max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           
-          {/* COLUNA ESQUERDA: Fundador + Imagens secundárias aumentadas */}
+          {/* COLUNA ESQUERDA: Fundador + Imagens secundárias */}
           <div className="lg:sticky lg:top-32 space-y-6">
             <h2 className="font-display uppercase text-5xl lg:text-7xl leading-[0.9]">
               Muito além <br /> da cadeira <br /> <span className="text-[#B71C1C]">e da navalha</span>
@@ -42,14 +42,14 @@ export default function History() {
             <div className="relative overflow-hidden rounded-lg cursor-pointer group">
               <img src="/images/foto2.jpeg" alt="Danilo França" className="w-full h-[450px] object-cover object-top transition-transform duration-500 group-hover:scale-105" />
               <div className="absolute bottom-6 left-6 text-white">
-                <p className="text-sm uppercase tracking-widest text-[#f5f3f3]">Fundador</p>
+               <p className="text-sm uppercase tracking-widest text-[#f5f3f3]">Fundador</p>
                 <h3 className="text-4xl font-bold uppercase">Danilo França</h3>
               </div>
             </div>
 
             <div className="flex gap-4">
               <div className="flex-1 h-64 overflow-hidden rounded-lg cursor-pointer">
-                <img src="/images/foto4.jpeg" className="w-full h-full object-cover object-[center_20%] hover:scale-105 transition-transform duration-500" alt="Corte 1" />
+                <img src="/images/foto1.jpeg" className="w-full h-full object-cover object-[center_20%] hover:scale-105 transition-transform duration-500" alt="Corte 1" />
               </div>
               <div className="flex-1 h-64 overflow-hidden rounded-lg cursor-pointer">
                 <img src="/images/foto3.jpeg" className="w-full h-full object-cover object-[center_30%] hover:scale-105 transition-transform duration-500" alt="Corte 2" />
@@ -57,7 +57,7 @@ export default function History() {
             </div>
           </div>
 
-          {/* COLUNA DIREITA: Timeline + Foto da barbearia */}
+          {/* COLUNA DIREITA: Timeline */}
           <div className="relative">
             <div className="space-y-20">
               {chapters.map((c) => (
@@ -65,14 +65,13 @@ export default function History() {
                   <div className="font-display text-6xl text-[#B71C1C]">{c.year}</div>
                   <h3 className="text-2xl uppercase mt-3 text-[#F5F5F5]">{c.title}</h3>
                   <p className="mt-4 text-xl text-[#D4D4D4] leading-relaxed">{c.body}</p>
-                  
-                  {c.year === "2020" && (
-                    <div className="mt-10 overflow-hidden rounded-lg cursor-pointer shadow-lg shadow-black/50">
-                      <img src={INTERIOR_URL} alt="Barbearia" className="w-full h-80 object-cover object-center transition-transform duration-500 hover:scale-[1.02]" />
-                    </div>
-                  )}
                 </div>
               ))}
+            </div>
+
+            {/* Imagem da Barbearia movida para o final da coluna direita */}
+            <div className="mt-20 overflow-hidden rounded-lg cursor-pointer shadow-lg shadow-black/50">
+              <img src={INTERIOR_URL} alt="Barbearia" className="w-full object-cover object-center transition-transform duration-500 hover:scale-[1.02]" />
             </div>
           </div>
 
