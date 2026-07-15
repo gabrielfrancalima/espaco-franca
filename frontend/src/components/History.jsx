@@ -69,30 +69,42 @@ export default function History() {
               </div>
             </div>
 <div className="grid grid-cols-2 gap-4 mt-6">
+  
+  {/* Imagem 1 */}
+  <div className="overflow-hidden rounded-lg cursor-pointer">
+    <img
+      src="/images/foto1.jpeg"
+      alt="Espaço França"
+      className="w-full h-48 object-cover object-top transition-transform duration-500 hover:scale-110"
+    />
+  </div>
 
-  <img
-    src="/images/foto1.jpeg"
-    alt="Espaço França"
-    className="w-full h-48 object-cover rounded-lg"
-  />
+  {/* Imagem 2 */}
+  <div className="overflow-hidden rounded-lg cursor-pointer">
+    <img
+      src={INTERIOR_URL}
+      alt="Espaço França"
+      className="w-full h-48 object-cover object-center transition-transform duration-500 hover:scale-110"
+    />
+  </div>
 
-  <img
-    src={INTERIOR_URL}
-    alt="Espaço França"
-    className="w-full h-48 object-cover rounded-lg"
-  />
+  {/* Imagem 3 */}
+  <div className="overflow-hidden rounded-lg cursor-pointer">
+    <img
+      src="/images/foto3.jpeg"
+      alt="Espaço França"
+      className="w-full h-48 object-cover object-center transition-transform duration-500 hover:scale-110"
+    />
+  </div>
 
-  <img
-    src="/images/foto3.jpeg"
-    alt="Espaço França"
-    className="w-full h-48 object-cover rounded-lg"
-  />
-
-  <img
-    src="/images/foto4.jpeg"
-    alt="Espaço França"
-    className="w-full h-48 object-cover rounded-lg"
-  />
+  {/* Imagem 4 */}
+  <div className="overflow-hidden rounded-lg cursor-pointer">
+    <img
+      src="/images/foto4.jpeg"
+      alt="Espaço França"
+      className="w-full h-48 object-cover object-center transition-transform duration-500 hover:scale-110"
+    />
+  </div>
 
 </div>
             <blockquote
