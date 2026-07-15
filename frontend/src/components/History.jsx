@@ -33,7 +33,7 @@ export default function History() {
       <div className="relative max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           
-          {/* COLUNA ESQUERDA: Fundador + Imagens secundárias */}
+          {/* COLUNA ESQUERDA: Fundador + Imagens secundárias aumentadas */}
           <div className="lg:sticky lg:top-32 space-y-6">
             <h2 className="font-display uppercase text-5xl lg:text-7xl leading-[0.9]">
               Muito além <br /> da cadeira <br /> <span className="text-[#B71C1C]">e da navalha</span>
@@ -48,11 +48,11 @@ export default function History() {
             </div>
 
             <div className="flex gap-4">
-              <div className="flex-1 h-40 overflow-hidden rounded-lg cursor-pointer">
-                <img src="/images/foto1.jpeg" className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500" alt="Corte 1" />
+              <div className="flex-1 h-64 overflow-hidden rounded-lg cursor-pointer">
+                <img src="/images/foto1.jpeg" className="w-full h-full object-cover object-[center_20%] hover:scale-105 transition-transform duration-500" alt="Corte 1" />
               </div>
-              <div className="flex-1 h-40 overflow-hidden rounded-lg cursor-pointer">
-                <img src="/images/foto3.jpeg" className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500" alt="Corte 2" />
+              <div className="flex-1 h-64 overflow-hidden rounded-lg cursor-pointer">
+                <img src="/images/foto3.jpeg" className="w-full h-full object-cover object-[center_30%] hover:scale-105 transition-transform duration-500" alt="Corte 2" />
               </div>
             </div>
           </div>
