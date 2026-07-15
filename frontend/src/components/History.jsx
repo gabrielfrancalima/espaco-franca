@@ -56,11 +56,18 @@ export default function History() {
               <span className="text-[#B71C1C]">e da navalha</span>
             </h2>
 
-            <div className="relative mt-10 diagonal-cut overflow-hidden">
-              <img
-                src="/images/foto2.jpeg"
-                alt="Danilo França e o Espaço França"
-                className="w-full h-[380px] object-cover"
+           {/* Grande Imagem Principal (foto2.jpeg) - Modificada com Efeito Hover e Enquadramento Superior */}
+<div className="relative mt-10 diagonal-cut overflow-hidden cursor-pointer group">
+  <img
+    src="/images/foto2.jpeg"
+    alt="Danilo França e o Espaço França"
+    className="w-full h-[380px] object-cover object-top transition-transform duration-500 group-hover:scale-110"
+  />
+  <div className="absolute bottom-10 left-10 text-white z-10">
+    <p className="text-[12px] uppercase tracking-widest text-[#B71C1C]">FUNDADOR</p>
+    <h3 className="text-5xl font-extrabold uppercase mt-1 leading-tight text-white">DANILO FRANÇA</h3>
+  </div>
+</div>
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
