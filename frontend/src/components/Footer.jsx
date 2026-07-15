@@ -45,15 +45,16 @@ export default function Footer() {
           </h4>
           <p className="text-sm text-[#A3A3A3] flex items-start gap-2">
   <MapPin size={14} className="mt-1 shrink-0" />
-  <>
-    R. Juraraterê, 07
+  <a 
+    href="https://www.google.com/maps/search/?api=1&query=R.+Juraraterê,+07+-+Itaim+Paulista,+São+Paulo+-+SP,+08140-040" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="hover:text-white hover:underline transition-colors cursor-pointer"
+  >
+    R. Juraraterê, 07 - Itaim Paulista
     <br />
-    Itaim Paulista
-    <br />
-    São Paulo - SP
-    <br />
-    CEP 08140-040
-  </>
+    São Paulo - SP - CEP 08140-040
+  </a>
 </p>
         </div>
 
