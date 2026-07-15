@@ -43,10 +43,10 @@ export default function Footer() {
           <h4 className="font-display uppercase tracking-widest text-sm mt-8 mb-4 text-[#B71C1C]">
             Endereço
           </h4>
-          <<p className="text-sm text-[#A3A3A3] flex items-start gap-2">
+          <p className="text-sm text-[#A3A3A3] flex items-start gap-2">
   <MapPin size={14} className="mt-1 shrink-0" />
   <a 
-    href="https://www.google.com/maps/search/?api=1&query=-23.501379359858994,-46.399977207521786" 
+    href="https://www.google.com/maps/search/?api=1&query=-23.50129901062628,-46.40017611975388" 
     target="_blank" 
     rel="noopener noreferrer"
     className="hover:text-white hover:underline transition-colors cursor-pointer"
