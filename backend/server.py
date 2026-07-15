@@ -14,7 +14,7 @@ import httpx
 import re
 import secrets
 import bcrypt
-import stripe
+import mercadopago
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / ".env")
@@ -23,9 +23,8 @@ mongo_url = os.environ["MONGO_URL"]
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ["DB_NAME"]]
 
-STRIPE_API_KEY = os.environ.get("STRIPE_API_KEY", "")
-STRIPE_WEBHOOK_SECRET = os.environ.get("STRIPE_WEBHOOK_SECRET", "")
-stripe.api_key = STRIPE_API_KEY
+MP_ACCESS_TOKEN = os.environ.get("MP_ACCESS_TOKEN", "")
+mp_sdk = mercadopago.SDK(MP_ACCESS_TOKEN)
 ADMIN_EMAIL = "df1384435@gmail.com"
 EMERGENT_SESSION_DATA_URL = (
     "https://demobackend.emergentagent.com/auth/v1/env/oauth/session-data"
@@ -540,7 +539,7 @@ async def admin_stats(_: User = Depends(require_admin)):
     }
 
 
-# ---------- Stripe Checkout ----------
+# ---------- Mercado Pago Checkout (Checkout Pro) ----------
 @api_router.post("/checkout/session")
 async def create_checkout_session(
     payload: CheckoutRequest,
@@ -552,8 +551,9 @@ async def create_checkout_session(
 
     plan = CLUB_PLANS[payload.plan_id]
     origin = payload.origin_url.rstrip("/")
-    success_url = f"{origin}/pagamento/sucesso?session_id={{CHECKOUT_SESSION_ID}}"
-    cancel_url = f"{origin}/pagamento/cancelado"
+    session_id = str(uuid.uuid4())
+    success_url = f"{origin}/pagamento/sucesso?session_id={session_id}"
+    failure_url = f"{origin}/pagamento/cancelado?session_id={session_id}"
 
     customer_email = (user.email if user else payload.customer_email) or ""
     customer_name = (user.name if user else payload.customer_name) or ""
@@ -567,28 +567,39 @@ async def create_checkout_session(
         "source": "espaco_franca_club",
     }
 
-    session = stripe.checkout.Session.create(
-        mode="payment",
-        payment_method_types=["card"],
-        line_items=[
+    host_url = str(http_request.base_url).rstrip("/")
+    preference_data = {
+        "items": [
             {
-                "price_data": {
-                    "currency": plan["currency"],
-                    "product_data": {"name": plan["name"]},
-                    "unit_amount": int(round(float(plan["amount"]) * 100)),
-                },
+                "title": plan["name"],
                 "quantity": 1,
+                "currency_id": plan["currency"].upper(),
+                "unit_price": float(plan["amount"]),
             }
         ],
-        success_url=success_url,
-        cancel_url=cancel_url,
-        customer_email=customer_email or None,
-        metadata=metadata,
-    )
+        "payer": ({"email": customer_email, "name": customer_name} if customer_email else {}),
+        "external_reference": session_id,
+        "back_urls": {
+            "success": success_url,
+            "failure": failure_url,
+            "pending": failure_url,
+        },
+        "auto_return": "approved",
+        "notification_url": f"{host_url}/api/webhook/mercadopago",
+        "metadata": metadata,
+    }
+
+    result = mp_sdk.preference().create(preference_data)
+    if result.get("status") not in (200, 201):
+        logger.error(f"Erro Mercado Pago: {result}")
+        raise HTTPException(status_code=502, detail="Falha ao criar preferência de pagamento")
+
+    preference = result["response"]
+    checkout_url = preference.get("sandbox_init_point") or preference.get("init_point")
 
     tx = PaymentTransaction(
         user_id=user.user_id if user else None,
-        session_id=session.id,
+        session_id=session_id,
         plan_id=payload.plan_id,
         plan_name=plan["name"],
         amount=float(plan["amount"]),
@@ -597,64 +608,65 @@ async def create_checkout_session(
         customer_name=customer_name or None,
         metadata=metadata,
     )
-    await db.payment_transactions.insert_one(tx.model_dump())
+    tx_dict = tx.model_dump()
+    tx_dict["mp_preference_id"] = preference.get("id")
+    await db.payment_transactions.insert_one(tx_dict)
 
-    return {"url": session.url, "session_id": session.id}
+    return {"url": checkout_url, "session_id": session_id}
 
 
 @api_router.get("/checkout/status/{session_id}")
 async def checkout_status(session_id: str, http_request: Request):
-    try:
-        session = stripe.checkout.Session.retrieve(session_id)
-    except stripe.error.StripeError as e:  # noqa: BLE001
-        raise HTTPException(status_code=404, detail=f"Sessão não encontrada: {e}")
-
     tx = await db.payment_transactions.find_one({"session_id": session_id}, {"_id": 0})
-    if tx and tx.get("payment_status") != "paid":
-        await db.payment_transactions.update_one(
-            {"session_id": session_id},
-            {
-                "$set": {
-                    "payment_status": session.payment_status,
-                    "status": session.status,
-                    "updated_at": datetime.now(timezone.utc).isoformat(),
-                }
-            },
-        )
+    if not tx:
+        raise HTTPException(status_code=404, detail="Sessão não encontrada")
 
     return {
         "session_id": session_id,
-        "status": session.status,
-        "payment_status": session.payment_status,
-        "amount_total": session.amount_total,
-        "currency": session.currency,
-        "metadata": session.metadata,
+        "status": tx.get("status", "open"),
+        "payment_status": tx.get("payment_status", "unpaid"),
+        "amount_total": int(round(float(tx.get("amount", 0)) * 100)),
+        "currency": tx.get("currency"),
+        "metadata": tx.get("metadata"),
     }
 
 
-@api_router.post("/webhook/stripe")
-async def stripe_webhook(request: Request):
-    body = await request.body()
-    signature = request.headers.get("Stripe-Signature", "")
-
+@api_router.post("/webhook/mercadopago")
+async def mercadopago_webhook(request: Request):
     try:
-        event = stripe.Webhook.construct_event(body, signature, STRIPE_WEBHOOK_SECRET)
-    except Exception as e:  # noqa: BLE001
-        logger.warning(f"Webhook error: {e}")
-        raise HTTPException(status_code=400, detail="Invalid webhook")
+        body = await request.json()
+    except Exception:  # noqa: BLE001
+        body = {}
 
-    event_type = event.get("type", "")
-    session_obj = event.get("data", {}).get("object", {})
-    session_id = session_obj.get("id")
+    # O Mercado Pago também pode notificar via query string (?type=payment&data.id=...)
+    query = request.query_params
+    event_type = body.get("type") or query.get("type") or query.get("topic")
+    payment_id = None
+    if isinstance(body.get("data"), dict):
+        payment_id = body["data"].get("id")
+    payment_id = payment_id or query.get("data.id") or query.get("id")
 
-    if session_id and event_type.startswith("checkout.session."):
-        payment_status = session_obj.get("payment_status", "unpaid")
+    if event_type != "payment" or not payment_id:
+        return {"received": True}
+
+    payment_result = mp_sdk.payment().get(payment_id)
+    if payment_result.get("status") != 200:
+        logger.warning(f"Não foi possível consultar pagamento {payment_id}: {payment_result}")
+        return {"received": True}
+
+    payment = payment_result["response"]
+    session_id = payment.get("external_reference")
+    mp_status = payment.get("status")  # approved, pending, rejected, etc.
+
+    if session_id:
+        payment_status = "paid" if mp_status == "approved" else ("unpaid" if mp_status == "rejected" else "pending")
         await db.payment_transactions.update_one(
             {"session_id": session_id},
             {
                 "$set": {
                     "payment_status": payment_status,
-                    "status": "complete" if payment_status == "paid" else "open",
+                    "status": "complete" if mp_status == "approved" else "open",
+                    "mp_payment_id": payment_id,
                     "updated_at": datetime.now(timezone.utc).isoformat(),
                 }
             },
