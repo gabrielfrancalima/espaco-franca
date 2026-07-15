@@ -58,11 +58,14 @@ export default function History() {
               </div>
             </div>
 
-            {/* 3. Foto da Barbearia */}
-            <div className="overflow-hidden rounded-lg cursor-pointer shadow-lg shadow-black/50">
-              <img src={INTERIOR_URL} alt="Barbearia" className="w-full object-cover object-center transition-transform duration-500 hover:scale-[1.02]" />
-            </div>
-          </div>
+            {/* 3. Foto da Barbearia - Altura ajustada */}
+<div className="overflow-hidden rounded-lg cursor-pointer shadow-lg shadow-black/50">
+  <img 
+    src={INTERIOR_URL} 
+    alt="Barbearia" 
+    className="w-full h-64 object-cover object-center transition-transform duration-500 hover:scale-[1.02]" 
+  />
+</div>
 
           {/* COLUNA DIREITA: Timeline */}
           <div className="relative">
