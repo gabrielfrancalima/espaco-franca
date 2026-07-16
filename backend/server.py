@@ -43,15 +43,15 @@ CLUB_PLANS: Dict[str, Dict] = {
         "name": "Club Prata",
         "amount": 129.90,
         "currency": "brl",
-        "description": "4 cortes + 2 barbas + 15% off",
-        "benefits": ["4 cortes de cabelo por mês", "2 barbas completas por mês", "15% off em serviços extras", "Bebida cortesia (cerveja/whisky)"],
+        "description": "4 cortes 10% off",
+        "benefits": ["4 cortes de cabelo por mês", "10% off em serviços extras"],
     },
     "ouro": {
         "name": "Club Ouro",
         "amount": 199.90,
         "currency": "brl",
         "description": "Ilimitado + benefícios premium",
-        "benefits": ["Cortes e barba ilimitados", "1 pigmentação por mês", "20% off em platinado", "Atendimento VIP com o Danilo França", "Kit produtos Espaço França"],
+        "benefits": ["Cortes ilimitados", "2 barbas por mês", "20% off em platinado", "Atendimento VIP com o Danilo França", "Kit produtos Espaço França"],
     },
 }
 
