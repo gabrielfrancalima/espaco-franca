@@ -60,7 +60,7 @@ export default function History() {
 
             {/* 3. Foto da Barbearia */}
             <div className="overflow-hidden rounded-lg cursor-pointer shadow-lg shadow-black/50">
-              <img src={INTERIOR_URL} alt="Barbearia" className="w-full object-cover object-center transition-transform duration-500 hover:scale-[1.02]" />
+              <img src={INTERIOR_URL} alt="Barbearia" className="className="w-full h-64 object-cover object-[center_0%] transition-transform duration-500 hover:scale-[1.02]" />
             </div>
           </div>
 
