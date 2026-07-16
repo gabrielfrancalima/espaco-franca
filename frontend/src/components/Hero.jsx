@@ -24,7 +24,7 @@ export default function Hero({ onBook, onSubscribe }) {
 
         {/* Degradês escuros */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/70 to-[#0A0A0A]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-transparent to-black/40" />
+<div className="absolute inset-0 bg-gradient-to-r from-black/85 via-transparent to-black/40" />
       </div>
 
       {/* Red accent line */}
