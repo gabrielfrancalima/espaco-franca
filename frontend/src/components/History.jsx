@@ -61,7 +61,7 @@ export default function History() {
             {/* 3. Foto da Barbearia (Corte a 80% para esconder a marca d'água do rodapé) */}
             <div className="overflow-hidden rounded-lg cursor-pointer shadow-lg shadow-black/50">
               <img 
-                src={INTERIOR_URL} 
+                src="/images/foto6.jpeg"
                 alt="Barbearia" 
                 className="w-full h-74 object-cover object-[center_50%] transition-transform duration-500 hover:scale-[1.02]" 
               />
