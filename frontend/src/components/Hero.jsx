@@ -11,7 +11,7 @@ export default function Hero({ onBook, onSubscribe }) {
       {/* Background */}
       <div className="absolute inset-0">
         
-        {/* VÍDEO DE FUNDO ADICIONADO AQUI */}
+        {/* VÍDEO DE FUNDO */}
         <video
           autoPlay
           loop
@@ -22,7 +22,7 @@ export default function Hero({ onBook, onSubscribe }) {
           <source src="/videos/video1.mp4" type="video/mp4" />
         </video>
 
-        {/* Degradês escuros mantidos para o texto continuar legível por cima do vídeo */}
+        {/* Degradês escuros */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/70 to-[#0A0A0A]" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-transparent to-black/40" />
       </div>
@@ -31,8 +31,10 @@ export default function Hero({ onBook, onSubscribe }) {
       <div className="absolute top-1/2 left-0 h-[2px] w-24 bg-[#B71C1C] hidden md:block" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pt-40 pb-24 min-h-screen flex flex-col justify-center">
+        {/* Mantivemos a estrutura de grid para o texto não perder o alinhamento à esquerda */}
         <div className="grid lg:grid-cols-[1.4fr_1fr] gap-12 items-center">
-          {/* Left column */}
+          
+          {/* Left column (Textos e Botões) */}
           <div className="fade-in-up">
             <div className="flex items-center gap-3 mb-8">
               <span className="h-[1px] w-10 bg-[#B71C1C]" />
@@ -89,16 +91,8 @@ export default function Hero({ onBook, onSubscribe }) {
             </div>
           </div>
 
-          {/* Right column - Logo showcase */}
-          <div className="relative hidden lg:flex items-center justify-center">
-            <div className="absolute inset-0 bg-[#B71C1C]/15 blur-[80px] rounded-full" />
-            <img
-              src={LOGO_URL}
-              alt="Espaço França Logo"
-              className="relative z-10 w-[380px] h-[380px] object-contain drop-shadow-[0_20px_60px_rgba(183,28,28,0.35)]"
-              data-testid="hero-logo"
-            />
-          </div>
+          {/* A COLUNA DIREITA COM A LOGO FOI REMOVIDA DAQUI */}
+
         </div>
       </div>
 
