@@ -63,7 +63,7 @@ export default function History() {
               <img 
                 src={INTERIOR_URL} 
                 alt="Barbearia" 
-                className="w-full h-74 object-cover object-[center_70%] transition-transform duration-500 hover:scale-[1.02]" 
+                className="w-full h-74 object-cover object-[center_50%] transition-transform duration-500 hover:scale-[1.02]" 
               />
             </div>
           </div>
