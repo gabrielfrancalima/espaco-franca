@@ -43,7 +43,7 @@ export default function History() {
             <div className="relative overflow-hidden rounded-lg cursor-pointer group">
               <img src="/images/foto2.jpeg" alt="Danilo França" className="w-full h-[450px] object-cover object-top transition-transform duration-500 group-hover:scale-105" />
               <div className="absolute bottom-6 left-6 text-white">
-               <p className="text-sm uppercase tracking-widest text-[#f5f3f3]">Fundador</p>
+                <p className="text-sm uppercase tracking-widest text-[#f5f3f3]">Fundador</p>
                 <h3 className="text-4xl font-bold uppercase">Danilo França</h3>
               </div>
             </div>
@@ -60,7 +60,7 @@ export default function History() {
 
             {/* 3. Foto da Barbearia */}
             <div className="overflow-hidden rounded-lg cursor-pointer shadow-lg shadow-black/50">
-              <img src={INTERIOR_URL} alt="Barbearia" className="className="w-full h-64 object-cover object-[center_0%] transition-transform duration-500 hover:scale-[1.02]" />
+              <img src={INTERIOR_URL} alt="Barbearia" className="w-full h-64 object-cover object-[center_0%] transition-transform duration-500 hover:scale-[1.02]" />
             </div>
           </div>
 
