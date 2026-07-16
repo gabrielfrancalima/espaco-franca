@@ -3,7 +3,7 @@ import { INTERIOR_URL } from "@/lib/assets";
 const chapters = [
   {
     year: "2015",
-    title: "O Quintal e o Sonho",
+    title: "O Quintal e  o Sonho",
     testId: "history-timeline-item-2015",
     body: `Nascido e criado com orgulho nas periferias de São Paulo, Danilo França aprendeu desde cedo que a vida exige coragem. Os primeiros cortes aconteceram no quintal de casa, atendendo os amigos da vizinhança. Cada trocado guardado tinha um propósito sagrado: financiar seus estudos em um curso profissionalizante de barbearia.`,
   },
@@ -29,58 +29,124 @@ const chapters = [
 
 export default function History() {
   return (
-    <section id="historia" className="relative py-24 bg-[#0A0A0A] overflow-hidden" data-testid="history-section">
-      <div className="relative max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          
-          {/* COLUNA ESQUERDA: Fundador -> Barbearia -> Fotos Menores */}
-          <div className="lg:sticky lg:top-32 space-y-6">
+    <section
+      id="historia"
+      className="relative py-24 lg:py-32 bg-[#0A0A0A] overflow-hidden"
+      data-testid="history-section"
+    >
+      {/* Big background number */}
+      <div className="absolute -top-10 -left-10 font-display text-[24rem] leading-none text-white/[0.02] select-none pointer-events-none">
+        DF
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+          <div className="lg:sticky lg:top-32">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="h-[1px] w-10 bg-[#B71C1C]" />
+              <span className="text-[11px] uppercase tracking-[0.4em] text-[#B71C1C]">
+                Nossa história
+              </span>
+            </div>
             <h2 className="font-display uppercase text-5xl lg:text-7xl leading-[0.9]">
-              Muito além <br /> da cadeira <br /> <span className="text-[#B71C1C]">e da navalha</span>
+              Muito além
+              <br />
+              da cadeira
+              <br />
+              <span className="text-[#B71C1C]">e da navalha</span>
             </h2>
 
-            {/* 1. Imagem do Fundador */}
-            <div className="relative overflow-hidden rounded-lg cursor-pointer group">
-              <img src="/images/foto2.jpeg" alt="Danilo França" className="w-full h-[450px] object-cover object-top transition-transform duration-500 group-hover:scale-105" />
-              <div className="absolute bottom-6 left-6 text-white">
-                <p className="text-xs uppercase tracking-widest text-[#B71C1C]">Fundador</p>
-                <h3 className="text-4xl font-bold uppercase">Danilo França</h3>
-              </div>
-            </div>
-
-            {/* 2. Foto da Barbearia (Altura reduzida e cortada com object-[center_0%]) */}
-            <div className="overflow-hidden rounded-lg cursor-pointer shadow-lg shadow-black/50">
-              <img 
-                src={INTERIOR_URL} 
-                alt="Barbearia" 
-                className="w-full h-64 object-cover object-[center_0%] transition-transform duration-500 hover:scale-[1.02]" 
+            {/* Grande Imagem Principal (foto2.jpeg) - Modificada com Efeito Hover e Enquadramento Superior */}
+            <div className="relative mt-10 diagonal-cut overflow-hidden cursor-pointer group">
+              <img
+                src="/images/foto2.jpeg"
+                alt="Danilo França e o Espaço França"
+                className="w-full h-[380px] object-cover object-top transition-transform duration-500 group-hover:scale-110"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-10 left-10 text-white z-10 pointer-events-none">
+                <p className="text-[12px] uppercase tracking-widest text-[#B71C1C]">FUNDADOR</p>
+                <h3 className="text-5xl font-extrabold uppercase mt-1 leading-tight text-white">DANILO FRANÇA</h3>
+              </div>
             </div>
 
-            {/* 3. Fotos menores */}
-            <div className="flex gap-4">
-              <div className="flex-1 h-64 overflow-hidden rounded-lg cursor-pointer">
-                <img src="/images/foto1.jpeg" className="w-full h-full object-cover object-[center_20%] hover:scale-105 transition-transform duration-500" alt="Corte 1" />
+            <div className="grid grid-cols-2 gap-4 mt-6">
+              {/* Imagem 1 */}
+              <div className="overflow-hidden rounded-lg cursor-pointer">
+                <img
+                  src="/images/foto1.jpeg"
+                  alt="Espaço França"
+                  className="w-full h-48 object-cover object-top transition-transform duration-500 hover:scale-110"
+                />
               </div>
-              <div className="flex-1 h-64 overflow-hidden rounded-lg cursor-pointer">
-                <img src="/images/foto3.jpeg" className="w-full h-full object-cover object-[center_30%] hover:scale-105 transition-transform duration-500" alt="Corte 2" />
+
+              {/* Imagem 2 */}
+              <div className="overflow-hidden rounded-lg cursor-pointer">
+                <img
+                  src={INTERIOR_URL}
+                  alt="Espaço França"
+                  className="w-full h-48 object-cover object-center transition-transform duration-500 hover:scale-110"
+                />
+              </div>
+
+              {/* Imagem 3 */}
+              <div className="overflow-hidden rounded-lg cursor-pointer">
+                <img
+                  src="/images/foto3.jpeg"
+                  alt="Espaço França"
+                  className="w-full h-48 object-cover object-center transition-transform duration-500 hover:scale-110"
+                />
+              </div>
+
+              {/* Imagem 4 */}
+              <div className="overflow-hidden rounded-lg cursor-pointer">
+                <img
+                  src="/images/foto4.jpeg"
+                  alt="Espaço França"
+                  className="w-full h-48 object-cover object-center transition-transform duration-500 hover:scale-110"
+                />
               </div>
             </div>
+
+            <blockquote
+              data-testid="history-founder-quote"
+              className="mt-10 border-l-2 border-[#B71C1C] pl-6 font-serif-story italic text-2xl md:text-3xl text-[#F5F5F5] leading-snug"
+            >
+              “A profissão de barbeiro salvou a minha vida.”
+              <footer className="mt-3 text-xs not-italic uppercase tracking-[0.3em] text-[#A3A3A3] font-body">
+                — Danilo França, fundador
+              </footer>
+            </blockquote>
           </div>
 
-          {/* COLUNA DIREITA: Timeline */}
+          {/* Timeline */}
           <div className="relative">
-            <div className="space-y-20">
+            <div className="absolute left-[14px] top-2 bottom-2 w-[1px] bg-white/10" />
+            <div className="space-y-14">
               {chapters.map((c) => (
-                <div key={c.year} data-testid={c.testId} className="relative pl-14 border-l border-white/10">
-                  <div className="font-display text-6xl text-[#B71C1C]">{c.year}</div>
-                  <h3 className="text-2xl uppercase mt-3 text-[#F5F5F5]">{c.title}</h3>
-                  <p className="mt-4 text-xl text-[#D4D4D4] leading-relaxed">{c.body}</p>
+                <div key={c.year} data-testid={c.testId} className="relative pl-14">
+                  <div className="absolute left-0 top-1 h-8 w-8 border border-[#B71C1C] bg-[#0A0A0A] flex items-center justify-center">
+                    <span className="h-2 w-2 bg-[#B71C1C]" />
+                  </div>
+                  <div className="font-display text-6xl text-[#B71C1C] leading-none">{c.year}</div>
+                  <h3 className="font-display uppercase tracking-wider text-2xl mt-3 text-[#F5F5F5]">
+                    {c.title}
+                  </h3>
+                  <p className="mt-4 font-serif-story text-xl md:text-2xl text-[#D4D4D4] leading-relaxed">
+                    {c.body}
+                  </p>
                 </div>
               ))}
+
+              <div className="pl-14">
+                <p className="font-serif-story italic text-xl md:text-2xl text-[#A3A3A3] leading-relaxed">
+                  E é essa vida, essa paixão e esse cuidado incondicional que entregamos a você
+                  em cada atendimento. Bem-vindo ao Espaço França. Sente-se, sinta-se em casa e
+                  faça parte da nossa história.
+                </p>
+              </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
