@@ -1,4 +1,4 @@
-import { INTERIOR_URL, LOGO_URL } from "@/lib/assets";
+import { LOGO_URL } from "@/lib/assets";
 import { Scissors, Calendar } from "lucide-react";
 
 export default function Hero({ onBook, onSubscribe }) {
@@ -10,11 +10,19 @@ export default function Hero({ onBook, onSubscribe }) {
     >
       {/* Background */}
       <div className="absolute inset-0">
-        <img
-          src={INTERIOR_URL}
-          alt="Interior da Espaço França"
+        
+        {/* VÍDEO DE FUNDO ADICIONADO AQUI */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
           className="h-full w-full object-cover"
-        />
+        >
+          <source src="/videos/video1.mp4" type="video/mp4" />
+        </video>
+
+        {/* Degradês escuros mantidos para o texto continuar legível por cima do vídeo */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/70 to-[#0A0A0A]" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-transparent to-black/40" />
       </div>
