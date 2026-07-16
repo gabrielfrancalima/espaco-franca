@@ -41,10 +41,10 @@ CLUB_PLANS: Dict[str, Dict] = {
     },
     "prata": {
         "name": "Club Prata",
-        "amount": 129.90,
+        "amount": 139.90,
         "currency": "brl",
         "description": "4 cortes 10% off",
-        "benefits": ["4 cortes de cabelo por mês", "10% off em serviços extras"],
+        "benefits": ["4 cortes de cabelo por mês", "10% off em serviços extras", "Prioridade no agendamento"],
     },
     "ouro": {
         "name": "Club Ouro",
